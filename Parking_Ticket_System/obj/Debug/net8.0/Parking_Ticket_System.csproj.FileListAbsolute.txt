@@ -1,0 +1,14 @@
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/bin/Debug/net8.0/Parking_Ticket_System
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/bin/Debug/net8.0/Parking_Ticket_System.deps.json
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/bin/Debug/net8.0/Parking_Ticket_System.runtimeconfig.json
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/bin/Debug/net8.0/Parking_Ticket_System.dll
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/bin/Debug/net8.0/Parking_Ticket_System.pdb
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.AssemblyInfoInputs.cache
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.AssemblyInfo.cs
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.csproj.CoreCompileInputs.cache
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.dll
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/refint/Parking_Ticket_System.dll
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.pdb
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.genruntimeconfig.cache
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/ref/Parking_Ticket_System.dll
