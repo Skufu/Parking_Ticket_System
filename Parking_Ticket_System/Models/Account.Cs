@@ -84,7 +84,7 @@ namespace ParkingTicketSystem.Models
             string empName = validator.stringValidation("Enter Employee Name: ", 1, 30).ToUpper();
             string dCode = validator.deptValidation("Department Code [M-Manager/S-Staff]: ");
             string accNumber = GenerateAccountNumber();
-            string statuesAccount = "NOT active";
+            string statuesAccount = "ACTIVE";
 
             StreamWriter accountWriter = new StreamWriter("Account.Txt", true);
             accountWriter.WriteLine($"{accNumber} | {username} | {password} | {empName} | {dCode} | {statuesAccount}");

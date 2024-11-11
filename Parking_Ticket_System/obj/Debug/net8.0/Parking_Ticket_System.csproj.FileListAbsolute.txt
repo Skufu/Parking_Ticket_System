@@ -12,3 +12,4 @@
 /Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.pdb
 /Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.genruntimeconfig.cache
 /Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/ref/Parking_Ticket_System.dll
+/Users/adriangabriellfrancisco/workspace/github.com/Skufu/Parking_Ticket_System/Parking_Ticket_System/obj/Debug/net8.0/Parking_Ticket_System.sourcelink.json
