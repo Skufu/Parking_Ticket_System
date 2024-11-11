@@ -61,7 +61,8 @@ namespace sampleLang
         // Show the main menu
         public void ShowParkingMenu()
         {
-            while (true)
+            bool running = true;
+            while (running)
             {
                 Console.WriteLine("\n=== Parking Management Menu ===");
                 Console.WriteLine("1 - Initialize Parking Information");
@@ -95,7 +96,8 @@ namespace sampleLang
                         _parkingTransaction.ExitVehicle();
                         break;
                     case 7:
-                        return;
+                        running = false;
+                        break;
                 }
             }
         }
