@@ -5,66 +5,10 @@ namespace sampleLang
 {
     public class ParkingTransaction
     {
-        private readonly string PARKING_FILE = Path.Combine("Parking.txt");
+        public static readonly string PARKING_FILE = Path.Combine("Parking.txt");
         private readonly FileHandler _fileHandler = new FileHandler();
 
-        public void ShowParkingStatus()
-        {
-            Console.WriteLine("\n=== Parking Status Per Floor ===");
-            
-            try
-            {
-                using (StreamReader sr = new StreamReader(PARKING_FILE))
-                {
-                    string line;
-                    int currentFloor = 1;
-                    int available = 0;
-                    int occupied = 0;
-                    
-                    // Skip the first 3 configuration lines
-                    for (int i = 0; i < 3; i++)
-                    {
-                        sr.ReadLine();
-                    }
-
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        string[] parts = line.Split('|');
-                        if (parts.Length >= 2)
-                        {
-                            string slotId = parts[0];
-                            string status = parts[1];
-                          
-
-                            // Extract floor number from slot ID (e.g., F01S01 -> 1)
-                            int floorNum = int.Parse(slotId.Substring(1, 2));
-
-                            if (floorNum != currentFloor)
-                            {
-                                // Print previous floor stats
-                                PrintFloorStats(currentFloor, available, occupied);
-                                currentFloor = floorNum;
-                                available = 0;
-                                occupied = 0;
-                            }
-
-                            if (status == "AVAILABLE")
-                                available++;
-                            else if (status == "OCCUPIED")
-                                occupied++;
-                        }
-                    }
-                    // Print last floor stats
-                    PrintFloorStats(currentFloor, available, occupied);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading parking data: {ex.Message}");
-            }
-        }
-
-        private void PrintFloorStats(int floor, int available, int occupied)
+        public static void PrintFloorStats(int floor, int available, int occupied)
         {
             Console.WriteLine($"\nFloor {floor}:");
             Console.WriteLine($"Available Slots: {available}");

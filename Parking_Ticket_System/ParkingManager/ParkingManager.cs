@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using ParkingTicketSystem.Utils;
 
+
 namespace sampleLang
 {
     // This class handles everything related to managing a parking lot
@@ -88,7 +89,7 @@ namespace sampleLang
                         ChangeSlotStatus();
                         break;
                     case 4: // Show current parking situation
-                        _parkingTransaction.ShowParkingStatus();
+                        ShowParkingStatus();
                         break;
                     case 5: // Park a new car
                         _parkingTransaction.ParkVehicle();
@@ -99,6 +100,63 @@ namespace sampleLang
                     case 7: // Go back to main menu
                         return;
                 }
+            }
+        }
+
+        public void ShowParkingStatus()
+        {
+            
+            Console.WriteLine("\n=== Parking Status Per Floor ===");
+            
+            try
+            {
+                using (StreamReader sr = new StreamReader(ParkingTransaction.PARKING_FILE))
+                {
+                    string line;
+                    int currentFloor = 1;
+                    int available = 0;
+                    int occupied = 0;
+                    
+                    // Skip the first 3 configuration lines
+                    for (int i = 0; i < 3; i++)
+                    {
+                        sr.ReadLine();
+                    }
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] parts = line.Split('|');
+                        if (parts.Length >= 2)
+                        {
+                            string slotId = parts[0];
+                            string status = parts[1];
+                          
+
+                            // Extract floor number from slot ID (e.g., F01S01 -> 1)
+                            int floorNum = int.Parse(slotId.Substring(1, 2));
+
+                            if (floorNum != currentFloor)
+                            {
+                                // Print previous floor stats
+                               ParkingTransaction.PrintFloorStats(currentFloor, available, occupied);
+                                currentFloor = floorNum;
+                                available = 0;
+                                occupied = 0;
+                            }
+
+                            if (status == "AVAILABLE")
+                                available++;
+                            else if (status == "OCCUPIED")
+                                occupied++;
+                        }
+                    }
+                    // Print last floor stats
+                    ParkingTransaction.PrintFloorStats(currentFloor, available, occupied);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading parking data: {ex.Message}");
             }
         }
 
