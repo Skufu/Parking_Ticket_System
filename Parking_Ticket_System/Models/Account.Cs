@@ -51,11 +51,17 @@ namespace ParkingTicketSystem.Models
                     string[] accountInfo = account.Split('|');
                     if (accountInfo[1].Trim() == username && accountInfo[2].Trim() == password)
                     {
-                        if (accountInfo[5].Trim().ToUpper() == "ACTIVE")
+                        if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "M")
                         {
                             found = true;
                             Console.WriteLine("Login successful!");
-                            //post-login logic here
+                            ManagerMenu();
+                        }
+                        else if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "S")
+                        {
+                            found = true;
+                            Console.WriteLine("Login successful!");
+                            staffMenu();
                         }
                         else
                         {
@@ -91,6 +97,15 @@ namespace ParkingTicketSystem.Models
             accountWriter.Close();
             Console.WriteLine("Account successfully created.");
             systemMenu();
+        }
+
+        public void staffMenu()
+        {
+
+        }
+        public void ManagerMenu()
+        {
+
         }
 
         private string GenerateAccountNumber()
