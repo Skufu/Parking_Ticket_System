@@ -101,11 +101,89 @@ namespace ParkingTicketSystem.Models
 
         public void staffMenu()
         {
+            Validation validator = new Validation();
+            while (true)
+            {
+                int choice = validator.IntValidation("\nStaff Menu\n" +
+                    "1 - Parking Transaction\n" +
+                    "2 - Parking Manager\n" +
+                    "3 - Logout\n" +
+                    "\nEnter your choice: ", 1, 3);
 
+                switch (choice)
+                {
+                    case 1:
+                        ParkingTransaction parkingTransaction = new ParkingTransaction();
+                        parkingTransaction.transactionMenu();
+                        break;
+                    case 2:
+                        ParkingManager parkingManager = new ParkingManager();
+                        parkingManager.parkingMenu();
+                        break;
+                    case 3:
+                        Console.WriteLine("Logging out...");
+                        systemMenu();
+                        return;
+                }
+            }
         }
+
         public void ManagerMenu()
         {
+            Validation validator = new Validation();
+            while (true)
+            {
+                int choice = validator.IntValidation("\nManager Menu\n" +
+                    "1 - Parking Transaction\n" +
+                    "2 - Parking Manager\n" +
+                    "3 - Account Management\n" +
+                    "4 - Logout\n" +
+                    "\nEnter your choice: ", 1, 4);
 
+                switch (choice)
+                {
+                    case 1:
+                        ParkingTransaction parkingTransaction = new ParkingTransaction();
+                        parkingTransaction.transactionMenu();
+                        break;
+                    case 2:
+                        ParkingManager parkingManager = new ParkingManager();
+                        parkingManager.parkingMenu();
+                        break;
+                    case 3:
+                        accountManagementMenu();
+                        break;
+                    case 4:
+                        Console.WriteLine("Logging out...");
+                        systemMenu();
+                        return;
+                }
+            }
+        }
+
+        private void accountManagementMenu()
+        {
+            Validation validator = new Validation();
+            while (true)
+            {
+                int choice = validator.IntValidation("\nAccount Management Menu\n" +
+                    "1 - List All Accounts\n" +
+                    "2 - Update Account Status\n" +
+                    "3 - Back to Manager Menu\n" +
+                    "\nEnter your choice: ", 1, 3);
+
+                switch (choice)
+                {
+                    case 1:
+                        listAccount();
+                        break;
+                    case 2:
+                        statusAccount();
+                        break;
+                    case 3:
+                        return;
+                }
+            }
         }
 
         private string GenerateAccountNumber()
