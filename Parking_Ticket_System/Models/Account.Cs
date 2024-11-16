@@ -198,7 +198,7 @@ namespace ParkingTicketSystem.Models
                     UpdateDepartmentCode();
                     break;
                 case 3:
-                    systemMenu();
+                    ManagerMenu();
                     break;
             }
         }
