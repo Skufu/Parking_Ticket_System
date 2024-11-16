@@ -21,9 +21,8 @@ namespace ParkingTicketSystem.Models
             Validation validator = new Validation();
             int choice = validator.IntValidation("\n1 - Login\n" +
                 "2 - Signup\n" +
-                "3 - Update Account\n" +
-                "4 - Exit\n" +
-                "\nEnter your choice: ", 1, 4);
+                "3 - Exit\n" +
+                "\nEnter your choice: ", 1, 3);
 
             switch (choice)
             {
@@ -34,9 +33,6 @@ namespace ParkingTicketSystem.Models
                     createAccount();                    // Create an account
                     break;
                 case 3:
-                    updateAccount();                    // Update user account (password, position[M/S])
-                    break;
-                case 4:
                     ExitProgram();
                     break;                   // Terminate the program
             }
@@ -121,7 +117,8 @@ namespace ParkingTicketSystem.Models
             Validation validator = new Validation();
             int choice = validator.IntValidation("\n1 - Account Management\n" +
                 "2 - Parking Management\n" +
-                "\nEnter your choice: ", 1, 2);
+                "3 - Exit to main menu\n" +
+                "\nEnter your choice: ", 1, 3);
 
             switch (choice)
             {
@@ -130,6 +127,9 @@ namespace ParkingTicketSystem.Models
                     break;
                 case 2:
                     _parkingManager.ShowParkingMenu();
+                    break;
+                case 3:
+                    systemMenu();
                     break;
             }
         }
@@ -141,9 +141,10 @@ namespace ParkingTicketSystem.Models
             {
                 int choice = validator.IntValidation("\nAccount Management Menu\n" +
                     "1 - List All Accounts\n" +
-                    "2 - Update Account Status\n" +
-                    "3 - Back to Manager Menu\n" +
-                    "\nEnter your choice: ", 1, 3);
+                    "2 - Change Account password\n" +
+                    "3 - Update Account Status\n" +
+                    "4 - Back to Manager Menu\n" +
+                    "\nEnter your choice: ", 1, 4);
 
                 switch (choice)
                 {
@@ -151,9 +152,12 @@ namespace ParkingTicketSystem.Models
                         listAccount();
                         break;
                     case 2:
-                        statusAccount();
+                        updateAccount();
                         break;
                     case 3:
+                        statusAccount();
+                        break;
+                    case 4:
                         ManagerMenu();
                         break;
                 }
