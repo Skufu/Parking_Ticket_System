@@ -2,11 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ParkingTicketSystem.Utils;
+using sampleLang;
 
 namespace ParkingTicketSystem.Models
 {
     public class Account
     {
+        private readonly ParkingManager _parkingManager;
+        
+        public Account()
+        {
+            _parkingManager = new ParkingManager();
+        }
+
         public void systemMenu()
         {
             Validation validator = new Validation();
@@ -101,64 +109,12 @@ namespace ParkingTicketSystem.Models
 
         public void staffMenu()
         {
-            Validation validator = new Validation();
-            while (true)
-            {
-                int choice = validator.IntValidation("\nStaff Menu\n" +
-                    "1 - Parking Transaction\n" +
-                    "2 - Parking Manager\n" +
-                    "3 - Logout\n" +
-                    "\nEnter your choice: ", 1, 3);
-
-                switch (choice)
-                {
-                    case 1:
-                        ParkingTransaction parkingTransaction = new ParkingTransaction();
-                        parkingTransaction.transactionMenu();
-                        break;
-                    case 2:
-                        ParkingManager parkingManager = new ParkingManager();
-                        parkingManager.parkingMenu();
-                        break;
-                    case 3:
-                        Console.WriteLine("Logging out...");
-                        systemMenu();
-                        return;
-                }
-            }
+            _parkingManager.ShowParkingMenu();
         }
 
         public void ManagerMenu()
         {
-            Validation validator = new Validation();
-            while (true)
-            {
-                int choice = validator.IntValidation("\nManager Menu\n" +
-                    "1 - Parking Transaction\n" +
-                    "2 - Parking Manager\n" +
-                    "3 - Account Management\n" +
-                    "4 - Logout\n" +
-                    "\nEnter your choice: ", 1, 4);
-
-                switch (choice)
-                {
-                    case 1:
-                        ParkingTransaction parkingTransaction = new ParkingTransaction();
-                        parkingTransaction.transactionMenu();
-                        break;
-                    case 2:
-                        ParkingManager parkingManager = new ParkingManager();
-                        parkingManager.parkingMenu();
-                        break;
-                    case 3:
-                        accountManagementMenu();
-                        break;
-                    case 4:
-                        Console.WriteLine("Logging out...");
-                        systemMenu();
-                        return;
-                }
-            }
+            _parkingManager.ShowParkingMenu();
         }
 
         private void accountManagementMenu()
