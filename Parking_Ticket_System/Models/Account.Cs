@@ -2,20 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ParkingTicketSystem.Utils;
+using sampleLang;
+using ParkingTicketSystem;
 
 namespace ParkingTicketSystem.Models
 {
     public class Account
     {
+        private readonly ParkingManager _parkingManager;
+
+        public Account()
+        {
+            _parkingManager = new ParkingManager();
+        }
+
         public void systemMenu()
         {
             Validation validator = new Validation();
             int choice = validator.IntValidation("\n1 - Login\n" +
                 "2 - Signup\n" +
-                "3 - Update Account\n" +
-                "4 - Deactivate/Activate Account\n" +
-                "5 - Exit\n" +
-                "\nEnter your choice: ", 1, 5);
+                "3 - Exit\n" +
+                "\nEnter your choice: ", 1, 3);
 
             switch (choice)
             {
@@ -26,14 +33,15 @@ namespace ParkingTicketSystem.Models
                     createAccount();                    // Create an account
                     break;
                 case 3:
-                    updateAccount();                    // Update user account (password, position[M/S])
-                    break;
-                case 4:
-                    statusAccount();                    // Activate or deactivate the account
-                    break;
-                case 5:
-                    break;                              // Terminate the program
+                    ExitProgram();
+                    break;                   // Terminate the program
             }
+        }
+
+        static void ExitProgram()
+        {
+            Console.WriteLine("\nThank you for using Parking Management System!");
+            Environment.Exit(0);
         }
 
         public void loginAccount()
@@ -51,15 +59,23 @@ namespace ParkingTicketSystem.Models
                     string[] accountInfo = account.Split('|');
                     if (accountInfo[1].Trim() == username && accountInfo[2].Trim() == password)
                     {
-                        if (accountInfo[5].Trim().ToUpper() == "ACTIVE")
+                        if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "M")
                         {
                             found = true;
+                            Console.WriteLine($"Welcome Manager{accountInfo[3]}\n");
                             Console.WriteLine("Login successful!");
-                            //post-login logic here
+                            ManagerMenu();
+                        }
+                        else if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "S")
+                        {
+                            found = true;
+                            Console.WriteLine($"Welcome Staff{accountInfo[3]}\n");
+                            Console.WriteLine("Login successful!");
+                            staffMenu();
                         }
                         else
                         {
-                            Console.WriteLine("Account is not active. Please contact administrator.");
+                            Console.WriteLine("Account is not active. Please contact Manager.");
                         }
                         break;
                     }
@@ -91,6 +107,63 @@ namespace ParkingTicketSystem.Models
             accountWriter.Close();
             Console.WriteLine("Account successfully created.");
             systemMenu();
+        }
+
+        public void staffMenu()
+        {
+            _parkingManager.ShowParkingMenu();
+        }
+
+        public void ManagerMenu()
+        {
+            Validation validator = new Validation();
+            int choice = validator.IntValidation("\n1 - Account Management\n" +
+                "2 - Parking Management\n" +
+                "3 - Exit to main menu\n" +
+                "\nEnter your choice: ", 1, 3);
+
+            switch (choice)
+            {
+                case 1:
+                    accountManagementMenu();
+                    break;
+                case 2:
+                    _parkingManager.ShowParkingMenu();
+                    break;
+                case 3:
+                    systemMenu();
+                    break;
+            }
+        }
+
+        private void accountManagementMenu()
+        {
+            Validation validator = new Validation();
+            while (true)
+            {
+                int choice = validator.IntValidation("\nAccount Management Menu\n" +
+                    "1 - List All Accounts\n" +
+                    "2 - Change Account password\n" +
+                    "3 - Update Account Status\n" +
+                    "4 - Back to Manager Menu\n" +
+                    "\nEnter your choice: ", 1, 4);
+
+                switch (choice)
+                {
+                    case 1:
+                        listAccount();
+                        break;
+                    case 2:
+                        updateAccount();
+                        break;
+                    case 3:
+                        statusAccount();
+                        break;
+                    case 4:
+                        ManagerMenu();
+                        break;
+                }
+            }
         }
 
         private string GenerateAccountNumber()
@@ -304,4 +377,4 @@ namespace ParkingTicketSystem.Models
             Console.ReadKey();
         }
     }
-} 
+}
