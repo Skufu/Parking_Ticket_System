@@ -62,18 +62,20 @@ namespace ParkingTicketSystem.Models
                         if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "M")
                         {
                             found = true;
+                            Console.WriteLine($"Welcome Manager{accountInfo[3]}\n");
                             Console.WriteLine("Login successful!");
                             ManagerMenu();
                         }
                         else if (accountInfo[5].Trim().ToUpper() == "ACTIVE" && accountInfo[4].Trim().ToUpper() == "S")
                         {
                             found = true;
+                            Console.WriteLine($"Welcome Staff{accountInfo[3]}\n");
                             Console.WriteLine("Login successful!");
                             staffMenu();
                         }
                         else
                         {
-                            Console.WriteLine("Account is not active. Please contact administrator.");
+                            Console.WriteLine("Account is not active. Please contact Manager.");
                         }
                         break;
                     }
