@@ -10,7 +10,7 @@ namespace ParkingTicketSystem.Models
     public class Account
     {
         private readonly ParkingManager _parkingManager;
-        
+
         public Account()
         {
             _parkingManager = new ParkingManager();
@@ -22,9 +22,8 @@ namespace ParkingTicketSystem.Models
             int choice = validator.IntValidation("\n1 - Login\n" +
                 "2 - Signup\n" +
                 "3 - Update Account\n" +
-                "4 - Deactivate/Activate Account\n" +
-                "5 - Exit\n" +
-                "\nEnter your choice: ", 1, 5);
+                "4 - Exit\n" +
+                "\nEnter your choice: ", 1, 4);
 
             switch (choice)
             {
@@ -38,9 +37,6 @@ namespace ParkingTicketSystem.Models
                     updateAccount();                    // Update user account (password, position[M/S])
                     break;
                 case 4:
-                    statusAccount();                    // Activate or deactivate the account
-                    break;
-                case 5:
                     ExitProgram();
                     break;                   // Terminate the program
             }
@@ -122,7 +118,20 @@ namespace ParkingTicketSystem.Models
 
         public void ManagerMenu()
         {
-            _parkingManager.ShowParkingMenu();
+            Validation validator = new Validation();
+            int choice = validator.IntValidation("\n1 - Account Management\n" +
+                "2 - Parking Management\n" +
+                "\nEnter your choice: ", 1, 2);
+
+            switch (choice)
+            {
+                case 1:
+                    accountManagementMenu();
+                    break;
+                case 2:
+                    _parkingManager.ShowParkingMenu();
+                    break;
+            }
         }
 
         private void accountManagementMenu()
@@ -145,7 +154,8 @@ namespace ParkingTicketSystem.Models
                         statusAccount();
                         break;
                     case 3:
-                        return;
+                        ManagerMenu();
+                        break;
                 }
             }
         }
@@ -361,4 +371,4 @@ namespace ParkingTicketSystem.Models
             Console.ReadKey();
         }
     }
-} 
+}
