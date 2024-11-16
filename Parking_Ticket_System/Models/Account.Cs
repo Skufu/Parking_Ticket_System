@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using ParkingTicketSystem.Utils;
 using sampleLang;
+using ParkingTicketSystem;
 
 namespace ParkingTicketSystem.Models
 {
@@ -40,8 +41,15 @@ namespace ParkingTicketSystem.Models
                     statusAccount();                    // Activate or deactivate the account
                     break;
                 case 5:
-                    break;                              // Terminate the program
+                    ExitProgram();
+                    break;                   // Terminate the program
             }
+        }
+
+        static void ExitProgram()
+        {
+            Console.WriteLine("\nThank you for using Parking Management System!");
+            Environment.Exit(0);
         }
 
         public void loginAccount()
